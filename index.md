@@ -10,11 +10,11 @@ Given input <x, s>, where x is the input data and s is a detrimental attribute o
 
 To achieve the goal, we first employ a deterministic encoder E to extract the representation h from x such that the representation h preserves x’s variations that are necessary to predict y while eliminating information from s. The representation h is denoted as E(x,s). In the previous example, x is the input image and s is the lighting condition. We can expect the encoder to generate an image representation h=E(x,s) regardless of the lighting condition of the original picture.
 
-With the input representation h from the encoder E, we then use a predictor M to model the probability distribution qM(y | h) and predict the target y.
+With the input representation h from the encoder E, we then use a predictor M to model the probability distribution qM(y &#124; h) and predict the target y.
 
 To effectively enforce the encoder to eliminate the information from s and result in an invariant representation, we set up a discriminator D, which is trained to predict s based on the encoded representation h.
 
-Now, there are three main components in the adversarial invariant feature learning process, the encoder E, the predictor M, and the discriminator D. While the discriminator D tries to maximize the likelihood qD(s | h), the encoder tries to minimize it, which forms a minimax game. Finally, the game results are calculated by the subtraction of log likelihood of qD(s | h) and qM(y | h) as shown below.
+Now, there are three main components in the adversarial invariant feature learning process, the encoder E, the predictor M, and the discriminator D. While the discriminator D tries to maximize the likelihood qD(s &#124; h), the encoder tries to minimize it, which forms a minimax game. Finally, the game results are calculated by the subtraction of log likelihood of qD(s &#124; h) and qM(y &#124; h) as shown below.
 
 ![formula](/image/minimax.png)
 
